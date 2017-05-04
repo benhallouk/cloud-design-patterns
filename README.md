@@ -35,3 +35,25 @@ Applications often have depandancies that comes in many form could be backend se
 ## Throttling Pattern
 
 Unpredictable traffic is always a problem for applications, suppose you have an application that its traffic suddenly increases this means that the application resources will become insufficient if not unavalaible with time, that will result in users having very poor experiance which you want to avoid, luckly the [**Throttling Pattern** will help you avoid that](Throttling/README.md)
+
+## External Configuration System Pattern
+
+Could based applications has many services thatthey depends on they all live in the cloud, hence the application needs to know how to connect or deal with this services, they maybe connection strings or cache settings or search endpoints etc ..., this are often stored in .net applications in the `web.config` and will get deployed within the application, the problem with that started when you have multiple applications it becomes hard to maintain each configuration that may use the same resources for example if the connectiuon string changes every `web.config` will have to be updated, ideally we will want the operation team to take care of any secrets while devs they only care about the application level and all that makes the configuration to be somehow complex however, 
+[*External Configuration System Pattern* will help on that](ExternalConfigurationSystem/README.md)
+
+## Federated Identity Pattern
+
+In secure applications or applications that have some part of it secured users will have to authenticate, but the users can login only if the application knows about thier identity so the application must hold record of all the avalaible users in some sort of storage often as database, this may sounds simple but imagine that an organisation have hundred applications and each application require authentcation so each application would have its own idendity records database and will be very complex to manage, luckly [*Federated Identity Pattern* come to solve this problem](FederatedIdentity/README.md)
+
+## Gatekeeper Pattern
+
+The cloud is all about exposing services while this comes with a lot of beneftis it is also insecure and could lead to many attackers trying to compromise this services using either Dos, Sql injections, cross site scripting or many more type of attacks so how wecan take advantages of the cloud and levraging functionality to users while keeping our services secure ? [*Gatekeeper Pattern* is the solution to this problem](Gatekeeper/README.md)
+
+## Runtime Reconfiguration Pattern
+
+Regular application have thier own configuration that is deployed along side with the application, so changing it often means redeploying the application or at least restart the application so that it can load the new configiuration, [*Runtime Reconfiguration Pattern*](RuntimeReconfiguration/README.md) is all about changing the configuration at runtime with no down time
+
+## Valet Key Pattern
+
+Application that does perform download and upload often uses a DMS service while the application is taking care of the bulk of the work the DMS service maybe used only as storage altough it comes with features that can help the application reduce its load, 
+[*Valet Key Pattern*](ValetKey/README.md) is about off loading operations like data transfer operationsto external resources like storage that way the application does not have to deal with download and upload of the data as the storage mechanism does take care of it
